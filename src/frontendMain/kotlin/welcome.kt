@@ -27,7 +27,7 @@ class Welcome(props: WelcomeProps) : RComponent<WelcomeProps, WelcomeState>(prop
             css {
                 +WelcomeStyles.textContainer
             }
-            +"Hello234dwadwdwadwdwdwadwadawdawd, ${state.name}"
+            +"Hello234, ${state.name}"
         }
         styledInput {
             css {

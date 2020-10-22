@@ -4,8 +4,11 @@ import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Route.game() {
-    post("/game/new") {
+fun Route.game() = route("/game/new") {
+    get {
+        call.respond("Hello gamer!!")
+    }
+    post {
         call.respond(
             Game(
                 id = "1",
