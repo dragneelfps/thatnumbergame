@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.*
 
 plugins {
   kotlin("multiplatform") version "1.4.10"
+  id("com.github.johnrengelman.shadow") version "5.2.0"
   application
 }
 group = "io.github.dragneelfps"
@@ -88,9 +89,9 @@ tasks {
   val frontendBrowserProductionWebpack by getting(KotlinWebpack::class)
   val backendProcessResources by getting(Copy::class) {
     dependsOn(frontendBrowserProductionWebpack)
-    from(frontendBrowserProductionWebpack.destinationDirectory) {
-      exclude("*.map")
-      into("WEB-INF")
+    inputs.dir(frontendBrowserProductionWebpack.destinationDirectory)
+    into("WEB-INF") {
+      from(frontendBrowserProductionWebpack.destinationDirectory)
     }
   }
 }
