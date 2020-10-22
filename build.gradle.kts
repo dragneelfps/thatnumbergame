@@ -82,9 +82,10 @@ application {
 }
 
 tasks {
-  val frontendBrowserProductionWebpack by getting(KotlinWebpack::class) {
+  withType<KotlinWebpack> {
     outputFileName = "main.js"
   }
+  val frontendBrowserProductionWebpack by getting(KotlinWebpack::class)
   val backendProcessResources by getting(Copy::class) {
     dependsOn(frontendBrowserProductionWebpack)
     from(frontendBrowserProductionWebpack.destinationDirectory) {
